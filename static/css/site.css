@@ -1,0 +1,1064 @@
+:root {
+  --brand-primary: #1e3a5f;
+  --brand-primary-light: #2563eb;
+  --brand-secondary: #0f2942;
+  --brand-accent: #1d4ed8;
+  --brand-bg-soft: #f1f5f9;
+  --brand-white: #ffffff;
+}
+
+body {
+  font-family: "Inter", "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* En üstte sabit bayi çubuğu - her zaman görünsün */
+.dealer-bar {
+  background: linear-gradient(90deg, #0f2942, #1e3a5f);
+  color: #fff;
+  position: relative;
+  z-index: 9999;
+}
+.dealer-bar .btn {
+  font-weight: 600;
+  min-width: 7rem;
+}
+
+/* ---------- E-ticaret üst bar ve menü ---------- */
+.header-ecom .top-bar {
+  background: linear-gradient(90deg, var(--brand-secondary), var(--brand-primary));
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.navbar-brand-ecom {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.navbar-brand-ecom:hover {
+  color: #fff !important;
+  opacity: 0.9;
+}
+
+.topbar-logo {
+  height: 36px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+.topbar-brand-text {
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.search-form-ecom .form-control {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.search-form-ecom .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.search-form-ecom .btn-primary {
+  background: var(--brand-primary-light);
+  border-color: var(--brand-primary-light);
+}
+
+.nav-menu-ecom {
+  background-color: var(--brand-secondary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-menu-ecom .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.35rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-menu-ecom .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Menü çubuğundaki Bayi Girişi / Bayi Başvurusu butonları (slidedaki gibi her zaman görünsün) */
+.nav-dealer-links {
+  flex-shrink: 0;
+}
+.nav-dealer-links .nav-link.btn {
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+}
+.nav-dealer-links .nav-link.btn:hover {
+  opacity: 0.9;
+  color: inherit !important;
+}
+
+.main-navbar {
+  background: linear-gradient(90deg, var(--brand-secondary), var(--brand-primary));
+}
+
+.top-bar {
+  background-color: var(--brand-secondary);
+  color: #e5e7eb;
+  padding: 0.25rem 0;
+}
+
+/* Üst bar: Bayi Girişi ve Bayi Başvurusu her zaman görünsün */
+.top-bar-row {
+  overflow: visible;
+}
+.top-bar-actions {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}
+.top-bar-actions .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+/* Üst barda iki bayi butonu yan yana, kesin görünsün */
+.top-bar-bayi-wrap {
+  display: inline-flex !important;
+  flex-shrink: 0;
+  min-width: 240px;
+}
+.top-bar-bayi-wrap .btn {
+  flex: 0 0 auto;
+  min-width: 100px;
+}
+.search-form-ecom {
+  min-width: 0;
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--brand-primary);
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.header-logo {
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-text {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.main-menu .nav-link {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 0.1rem;
+  transition: color 0.2s ease;
+}
+
+.main-menu .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem;
+  width: 0;
+  height: 2px;
+  background-color: #f97316;
+  transition: width 0.2s ease;
+}
+
+.main-menu .nav-link:hover::after {
+  width: 100%;
+}
+
+.search-bar input {
+  min-width: 180px;
+}
+
+.hero-card {
+  background: radial-gradient(circle at top left, rgba(229, 57, 53, 0.15), transparent),
+              radial-gradient(circle at bottom right, rgba(29, 78, 216, 0.15), transparent);
+  border: none;
+}
+
+.hero-title {
+  letter-spacing: 0.02em;
+}
+
+.feature-card,
+.product-card,
+.dealer-card {
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 0.45rem 1.4rem rgba(15, 23, 42, 0.16);
+  background-color: #fff;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, translate 0.22s ease;
+}
+
+.product-card:hover,
+.dealer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1rem 2.5rem rgba(15, 23, 42, 0.28);
+}
+
+.feature-card-border {
+  border-top: 4px solid var(--brand-accent);
+}
+
+.product-image-wrapper {
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #111827, #4b5563);
+  position: relative;
+  padding-top: 60%;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.product-image-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f9fafb;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.product-price {
+  font-size: 1.05rem;
+}
+
+.badge-sku {
+  background-color: rgba(229, 57, 53, 0.08);
+  color: var(--brand-primary);
+}
+
+.stock-badge {
+  font-size: 0.75rem;
+}
+
+.stock-badge.in-stock {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.stock-badge.out-of-stock {
+  background-color: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.main-footer {
+  background-color: var(--brand-secondary);
+  color: #e5e7eb;
+}
+
+.main-footer .footer-link {
+  color: #e5e7eb;
+  text-decoration: none;
+}
+
+.main-footer .footer-link:hover {
+  text-decoration: underline;
+}
+
+table.table th {
+  border-top: none;
+}
+
+/* Brand selector */
+.brand-selector {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 0.2rem 0.6rem rgba(15, 23, 42, 0.08);
+}
+
+.brand-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-selected img {
+  width: 32px;
+  height: 32px;
+}
+
+.brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--brand-bg-soft);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.brand-pill img {
+  width: 24px;
+  height: 24px;
+}
+
+.brand-pill:hover {
+  background-color: rgba(229, 57, 53, 0.08);
+  transform: translateY(-1px);
+}
+
+.brand-pill.active {
+  background-color: var(--brand-primary);
+  color: #fff;
+}
+
+.brand-pill.active img {
+  filter: brightness(10);
+}
+
+/* Home page: intro below banner */
+.home-intro {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.home-intro-title {
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 600;
+  color: var(--brand-secondary);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.home-intro-lead {
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* Home page sections */
+.home-section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.brand-logos-strip {
+  background-color: var(--brand-bg-soft);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.brand-logos-strip img {
+  max-height: 32px;
+  opacity: 0.8;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.brand-logos-strip img:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.campaign-card {
+  border-radius: 0.9rem;
+  border: none;
+  background: linear-gradient(135deg, rgba(229, 57, 53, 0.12), rgba(17, 24, 39, 0.96));
+  color: #f9fafb;
+}
+
+.campaign-card .badge {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.home-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #f9fafb;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-outline-primary,
+.btn-light {
+  border-radius: 999px;
+  padding-inline: 1.4rem;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  box-shadow: 0 0.65rem 1.6rem rgba(229, 57, 53, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.9rem 2rem rgba(229, 57, 53, 0.5);
+}
+
+.btn-outline-primary:hover,
+.btn-light:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0.65rem 1.6rem rgba(15, 23, 42, 0.25);
+}
+
+/* ---------- Ana sayfa: menü slider üstünde, içerik altında ---------- */
+.page-landing main .container-main {
+  padding-top: 2rem;
+}
+
+/* ---------- Slider (sol) + Araç arama paneli (sağ); mobilde alt alta ---------- */
+.hero-slider-section {
+  padding: 1.5rem 1rem 2rem;
+  background: transparent;
+}
+
+.hero-hero-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero-slider-container {
+  flex: 1 1 60%;
+  min-width: 280px;
+  min-height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+.hero-search-panel {
+  flex: 0 0 320px;
+  min-width: 280px;
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-search-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-search-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--brand-secondary);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--brand-bg-soft);
+}
+
+.hero-search-form .form-label {
+  color: #374151;
+}
+
+.hero-search-form .form-select {
+  border-radius: 8px;
+  border-color: #e5e7eb;
+}
+
+.hero-search-form .form-select:focus {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 0.2rem rgba(30, 58, 95, 0.15);
+}
+
+@media (max-width: 991.98px) {
+  .hero-hero-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-slider-container {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-search-panel {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.hero-slider-container .carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-slider-container .carousel-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hero-slider-container .carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--brand-secondary);
+  display: block;
+}
+
+.hero-slider-container .carousel-caption {
+  left: 0;
+  right: 0;
+  padding: 0;
+}
+
+.hero-caption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.5rem 1.75rem;
+  background: linear-gradient(to top, rgba(15, 41, 66, 0.88) 0%, rgba(15, 41, 66, 0.4) 60%, transparent);
+  text-align: left;
+}
+
+.hero-slider-subtitle {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.hero-slider-title {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  line-height: 1.3;
+}
+
+.hero-slider-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-slider-actions .btn {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-slider-actions .btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Sağ/sol oklar */
+.hero-slider-container .carousel-control-prev,
+.hero-slider-container .carousel-control-next {
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  opacity: 1;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+}
+
+.hero-slider-container .carousel-control-prev { left: 0.75rem; }
+.hero-slider-container .carousel-control-next { right: 0.75rem; }
+
+.hero-slider-container .carousel-control-prev:hover,
+.hero-slider-container .carousel-control-next:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Altında küçük noktalar */
+.hero-slider-container .carousel-indicators {
+  margin-bottom: 0.75rem;
+  gap: 0.4rem;
+}
+
+.hero-slider-container .carousel-indicators button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.45);
+  border: none;
+  opacity: 1;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.hero-slider-container .carousel-indicators button:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-slider-container .carousel-indicators button.active {
+  background-color: #fff;
+  transform: scale(1.2);
+}
+
+/* ---------- Kategori kutuları ---------- */
+.category-card {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(15, 41, 66, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 41, 66, 0.12);
+  border-color: var(--brand-primary-light);
+}
+
+.category-card-icon {
+  width: 48px;
+  height: 48px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  background: var(--brand-bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-placeholder {
+  font-size: 1.5rem;
+}
+
+/* ---------- Çok Satan Ürünler / E-ticaret ürün kartı ---------- */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-secondary);
+}
+
+.product-card-ecom {
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card-ecom:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 41, 66, 0.12);
+}
+
+.product-card-image-wrap {
+  width: 100%;
+  height: 200px;
+  background: var(--brand-bg-soft);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+  background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+  font-size: 0.85rem;
+}
+
+.product-card-ecom .card-body {
+  padding: 1rem;
+}
+
+.product-card-ecom .card-footer {
+  padding: 0 1rem 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 0.9rem;
+  }
+
+  .header-logo {
+    height: 28px;
+    max-width: 100px;
+  }
+
+  .search-bar input {
+    min-width: 120px;
+  }
+
+  .hero-banner-title {
+    font-size: clamp(22px, 5vw, 28px);
+  }
+
+  .hero-banner-lead {
+    font-size: 15px;
+  }
+
+  .hero-banner-actions .btn {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .hero-slider-container { height: 320px; }
+  .hero-slider-container .carousel-inner { height: 320px; }
+  .hero-slider-container .carousel-item { height: 320px; }
+  .hero-slide-img { height: 320px; }
+  .hero-caption { padding: 1rem 1rem 1.25rem; }
+  .hero-slider-title { font-size: 1rem; }
+  .hero-slider-actions { flex-direction: column; }
+  .hero-slider-actions .btn { width: 100%; }
+  .hero-slider-container .carousel-control-prev { left: 0.5rem; }
+  .hero-slider-container .carousel-control-next { right: 0.5rem; }
+  .hero-slider-container .carousel-control-prev,
+  .hero-slider-container .carousel-control-next { width: 40px; height: 40px; }
+
+  .hero-hero-wrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-slider-container {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-search-panel {
+    flex: none;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ---------- İletişim sayfası: premium otomotiv (Borusan / Otosepet) ---------- */
+.contact-page-premium.contact-page,
+.contact-page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem 3rem;
+}
+
+.contact-page-premium .contact-page-title,
+.contact-page .contact-page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brand-secondary);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+.contact-page-premium .contact-layout,
+.contact-page .contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-page-premium .contact-card,
+.contact-page .contact-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(15, 41, 66, 0.08), 0 2px 10px rgba(0, 0, 0, 0.04);
+  padding: 40px;
+  border: 1px solid rgba(30, 58, 95, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-page-premium .contact-card:hover,
+.contact-page .contact-card:hover {
+  box-shadow: 0 16px 48px rgba(15, 41, 66, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.contact-page-premium .contact-card-title,
+.contact-page .contact-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--brand-secondary);
+  margin-bottom: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+/* Form: büyük modern inputlar, mavi glow focus */
+.contact-page-premium .contact-form .form-label,
+.contact-page .contact-form .form-label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.contact-page-premium .contact-form .form-control,
+.contact-page .contact-form .form-control {
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  min-height: 48px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-page-premium .contact-form .form-control:focus,
+.contact-page .contact-form .form-control:focus {
+  border-color: var(--brand-primary-light);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.contact-page-premium .contact-form textarea.form-control,
+.contact-page .contact-form textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Gönder butonu: full width, mavi gradient */
+.contact-page-premium .btn-contact-submit,
+.contact-page .btn-contact-submit {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%) !important;
+  color: #fff !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contact-page-premium .btn-contact-submit:hover,
+.contact-page .btn-contact-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(30, 58, 95, 0.35);
+  color: #fff !important;
+}
+
+/* İletişim bilgileri kartı */
+.contact-page-premium .contact-info-item,
+.contact-page .contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-page-premium .contact-info-icon,
+.contact-page .contact-info-icon {
+  font-size: 1.35rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.contact-page-premium .contact-info-item div,
+.contact-page .contact-info-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-page-premium .contact-info-label,
+.contact-page .contact-info-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.contact-page-premium .contact-info-item a,
+.contact-page .contact-info-item a {
+  color: var(--brand-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.contact-page-premium .contact-info-item a:hover,
+.contact-page .contact-info-item a:hover {
+  color: var(--brand-primary-light);
+  text-decoration: underline;
+}
+
+.contact-page-premium .contact-info-address,
+.contact-page .contact-info-address {
+  font-size: 1rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.contact-page-premium .contact-dealer-note,
+.contact-page .contact-dealer-note {
+  font-size: 0.8125rem;
+  color: #94a3b8 !important;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* 3 büyük iletişim butonu kartı */
+.contact-actions-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.contact-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-action-card:hover {
+  transform: translateY(-6px);
+  color: #fff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+}
+
+.contact-action-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.contact-action-icon svg {
+  display: block;
+}
+
+.contact-action-text {
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.contact-action-whatsapp {
+  background: linear-gradient(145deg, #25d366 0%, #20bd5a 100%);
+}
+
+.contact-action-whatsapp:hover {
+  box-shadow: 0 16px 48px rgba(37, 211, 102, 0.4);
+}
+
+.contact-action-call {
+  background: linear-gradient(145deg, #dc3545 0%, #c82333 100%);
+}
+
+.contact-action-call:hover {
+  box-shadow: 0 16px 48px rgba(220, 53, 69, 0.4);
+}
+
+.contact-action-map {
+  background: linear-gradient(145deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+}
+
+.contact-action-map:hover {
+  box-shadow: 0 16px 48px rgba(30, 58, 95, 0.35);
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .contact-page-premium.contact-page,
+  .contact-page {
+    padding: 0 1rem 2rem;
+  }
+
+  .contact-page-premium .contact-page-title,
+  .contact-page .contact-page-title {
+    font-size: 1.625rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-page-premium .contact-layout,
+  .contact-page .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-page-premium .contact-card,
+  .contact-page .contact-card {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .contact-page-premium .contact-form .form-control,
+  .contact-page .contact-form .form-control {
+    min-height: 44px;
+  }
+
+  .contact-actions-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .contact-action-card {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .contact-action-icon {
+    font-size: 1.75rem;
+  }
+}

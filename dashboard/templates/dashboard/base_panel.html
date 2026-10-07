@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page_title|default:"Yönetim Paneli" }}{% endblock %} | {{ site_settings.site_name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}?v=5">
+  <style>
+    .panel-nav { background: linear-gradient(135deg, #1e3a5f 0%, #0f2942 100%); }
+    .panel-nav .nav-link { color: rgba(255,255,255,0.9); font-weight: 500; }
+    .panel-nav .nav-link:hover, .panel-nav .nav-link.active { color: #fff; }
+    .kpi-card { border-left: 4px solid #1e3a5f; }
+    .kpi-card.revenue { border-left-color: #0d6efd; }
+    .kpi-card.warning { border-left-color: #fd7e14; }
+    .kpi-card.danger { border-left-color: #dc3545; }
+  </style>
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark panel-nav">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold" href="{% url 'dashboard:redirect' %}">{{ page_title|default:"Yönetim Paneli" }}</a>
+      <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#panelNav" aria-controls="panelNav" aria-expanded="false" aria-label="Menü">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="panelNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if dashboard_can_management %}
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'management' %}active{% endif %}" href="{% url 'dashboard:management' %}">Yönetim</a>
+            </li>
+          {% endif %}
+          {% if dashboard_can_warehouse %}
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'warehouse' %}active{% endif %}" href="{% url 'dashboard:warehouse' %}">Depo</a>
+            </li>
+          {% endif %}
+          {% if dashboard_can_dealer %}
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'dealer' %}active{% endif %}" href="{% url 'dashboard:dealer' %}">Bayi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dealer:products' %}">Ürünler</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dealer:order_list' %}">Siparişlerim</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dealer:cart' %}">Sepet</a>
+            </li>
+          {% endif %}
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-sm btn-outline-light" href="{% url 'home' %}">Siteye Dön</a>
+          {% if dashboard_can_dealer %}
+          <a class="btn btn-sm btn-outline-light" href="{% url 'dealer:dashboard' %}">Bayi Paneli</a>
+          {% endif %}
+          {% if user.is_authenticated %}
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-light">Çıkış</button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Kapat"></button>
+      </div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

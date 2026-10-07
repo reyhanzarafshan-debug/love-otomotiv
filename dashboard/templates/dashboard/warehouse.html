@@ -1,0 +1,89 @@
+{% extends "dashboard/base_panel.html" %}
+{% block title %}Depo Paneli{% endblock %}
+{% block content %}
+<h1 class="h3 mb-4">Depo Paneli</h1>
+
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-md">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Hazırlanacak</div>
+        <div class="fs-3 fw-bold">{{ orders_to_prepare_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Hazırlanıyor</div>
+        <div class="fs-3 fw-bold">{{ orders_preparing_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Kargoya hazır</div>
+        <div class="fs-3 fw-bold">{{ orders_ready_to_ship_count }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md">
+    <div class="card kpi-card revenue h-100">
+      <div class="card-body">
+        <div class="text-muted small">Bugün kargolanan</div>
+        <div class="fs-3 fw-bold">{{ today_shipments_count }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-8">
+    <div class="card">
+      <div class="card-header bg-white fw-bold">Hazırlanacak siparişler (Beklemede)</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead><tr><th>ID</th><th>Bayi / Müşteri</th><th>Durum</th><th class="text-end">Oluşturulma</th></tr></thead>
+            <tbody>
+              {% for order in orders_to_prepare %}
+                <tr>
+                  <td>#{{ order.id }}</td>
+                  <td>{{ order.dealer.company_name|default:order.customer_name|default:"Misafir" }}</td>
+                  <td><span class="badge bg-secondary">{{ order.get_status_display }}</span></td>
+                  <td class="text-end">{{ order.created_at|date:"d.m.Y H:i" }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Sipariş yok</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card">
+      <div class="card-header bg-white fw-bold text-warning">Düşük stok (≤ {{ low_stock_threshold }})</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Ürün</th><th class="text-end">Mevcut</th></tr></thead>
+            <tbody>
+              {% for p in low_stock_products %}
+                <tr>
+                  <td>{{ p.name }}</td>
+                  <td class="text-end">{{ p.available }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="2" class="text-muted">Yok</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

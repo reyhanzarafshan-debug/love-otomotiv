@@ -1,0 +1,106 @@
+{% extends "dashboard/base_panel.html" %}
+{% block title %}{{ page_title|default:"Panel Management" }}{% endblock %}
+{% block content %}
+<h1 class="h3 mb-4">{{ page_title|default:"Panel Management" }}</h1>
+
+{% if has_warning %}
+  <div class="alert alert-warning d-flex align-items-center mb-4">
+    <span class="me-2">⚠</span>
+    <div>
+      {% if profile.risk_warning %}Risk uyarınız bulunuyor.{% endif %}
+      {% if profile.remaining_credit < 0 %}Kredi limitiniz aşıldı ({{ profile.remaining_credit|floatformat:2 }} ₺). Ödeme yapıldıktan sonra sipariş verebilirsiniz.{% endif %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="row g-3 mb-4">
+  <div class="col-sm-6 col-md-3">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Kredi limiti</div>
+        <div class="fs-5 fw-bold">{{ profile.credit_limit|floatformat:2 }} ₺</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Cari borç</div>
+        <div class="fs-5 fw-bold">{{ profile.current_debt|floatformat:2 }} ₺</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card kpi-card {% if remaining_limit < 0 %}danger{% else %}revenue{% endif %} h-100">
+      <div class="card-body">
+        <div class="text-muted small">Kalan limit</div>
+        <div class="fs-5 fw-bold">{{ remaining_limit|floatformat:2 }} ₺</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-3">
+    <div class="card kpi-card h-100">
+      <div class="card-body">
+        <div class="text-muted small">Vade (gün)</div>
+        <div class="fs-5 fw-bold">{{ profile.payment_term_days }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header bg-white fw-bold">Açık siparişler</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead><tr><th>ID</th><th>Durum</th><th class="text-end">Tutar</th><th class="text-end">Tarih</th></tr></thead>
+            <tbody>
+              {% for order in open_orders %}
+                <tr>
+                  <td><a href="{% url 'dealer:order_detail' order.id %}">#{{ order.id }}</a></td>
+                  <td><span class="badge bg-secondary">{{ order.get_status_display }}</span></td>
+                  <td class="text-end">{{ order.total_amount|floatformat:2 }} ₺</td>
+                  <td class="text-end">{{ order.created_at|date:"d.m.Y" }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Açık sipariş yok</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header bg-white fw-bold">Son 10 sipariş</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0">
+            <thead><tr><th>ID</th><th>Durum</th><th class="text-end">Tutar</th><th class="text-end">Tarih</th></tr></thead>
+            <tbody>
+              {% for order in last_10_orders %}
+                <tr>
+                  <td><a href="{% url 'dealer:order_detail' order.id %}">#{{ order.id }}</a></td>
+                  <td><span class="badge {% if order.status == 'shipped' %}bg-warning text-dark{% elif order.status == 'delivered' %}bg-success{% else %}bg-secondary{% endif %}">{{ order.get_status_display }}</span></td>
+                  <td class="text-end">{{ order.total_amount|floatformat:2 }} ₺</td>
+                  <td class="text-end">{{ order.created_at|date:"d.m.Y" }}</td>
+                </tr>
+              {% empty %}
+                <tr><td colspan="4" class="text-muted">Sipariş yok</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-3">
+  <a href="{% url 'dealer:products' %}" class="btn btn-primary">Ürünlere git</a>
+  <a href="{% url 'dealer:order_list' %}" class="btn btn-outline-primary">Tüm siparişler</a>
+</div>
+{% endblock %}
