@@ -5,7 +5,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.utils.safestring import mark_safe
 
-from .models import (
+from dealer.models import (
     AccountTransaction,
     BankTransferNotice,
     Category,
