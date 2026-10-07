@@ -1,3 +1,5 @@
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(_file_))))
 from django import forms
 from django.contrib import admin
 from django.contrib import messages
@@ -5,7 +7,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.utils.safestring import mark_safe
 
-from dealer.models import (
+from .models import (
     AccountTransaction,
     BankTransferNotice,
     Category,
@@ -374,31 +376,13 @@ class PaymentAllocationAdmin(admin.ModelAdmin):
 
 @admin.register(MailOrderRequest)
 class MailOrderRequestAdmin(admin.ModelAdmin):
-    list_display = ("id", "dealer", "amount", "card_holder_display", "card_last4_display", "expiry_mmyy", "status", "created_at", "approved_at", "approved_by")
+    list_display = ("id", "dealer", "amount", "status", "phone", "created_at", "approved_at", "approved_by")
     list_filter = ("status", "dealer", "created_at")
-    search_fields = ("dealer__company_name", "note", "phone", "card_holder_name", "card_number")
+    search_fields = ("dealer__company_name", "note", "phone")
     readonly_fields = ("created_at", "updated_at", "approved_at")
     list_per_page = 25
     date_hierarchy = "created_at"
-    actions = ["mark_approved", "mark_rejected", "mark_paid"]
-    fieldsets = (
-        (None, {"fields": ("dealer", "amount", "status")}),
-        ("Kart bilgileri", {"fields": ("card_holder_name", "card_number", "expiry_mmyy", "cvv")}),
-        ("İletişim / Not", {"fields": ("phone", "note")}),
-        ("Zaman", {"fields": ("created_at", "updated_at", "approved_at", "approved_by", "related_payment")}),
-    )
-
-    def card_holder_display(self, obj):
-        return obj.card_holder_name or "—"
-
-    card_holder_display.short_description = "Kart sahibi"
-
-    def card_last4_display(self, obj):
-        if not obj.card_number or len(obj.card_number) < 4:
-            return "—"
-        return "****" + obj.card_number[-4:]
-
-    card_last4_display.short_description = "Kart (son 4)"
+    actions = ["mark_approved", "mark_rejected"]
 
     @admin.action(description="Seçilileri onayla")
     def mark_approved(self, request, queryset):
@@ -416,13 +400,6 @@ class MailOrderRequestAdmin(admin.ModelAdmin):
             status=MailOrderRequest.STATUS_REJECTED,
         )
         self.message_user(request, f"{updated} talep reddedildi.", messages.SUCCESS)
-
-    @admin.action(description="Seçilileri tahsil edildi yap")
-    def mark_paid(self, request, queryset):
-        updated = queryset.exclude(status=MailOrderRequest.STATUS_PAID).update(
-            status=MailOrderRequest.STATUS_PAID,
-        )
-        self.message_user(request, f"{updated} talep tahsil edildi olarak işaretlendi.", messages.SUCCESS)
 
 
 @admin.register(BankTransferNotice)
